@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { ApolloServer } = require("apollo-server-express");
 const dotenv = require("dotenv");
-const { functions } = require("lodash");
 
 dotenv.config();
 
