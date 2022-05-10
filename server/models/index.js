@@ -1,2 +1,4 @@
-require('./song');
-require('./lyric');
+const models = {
+  song: require('./song'),
+  lyric: require('./lyric')
+};

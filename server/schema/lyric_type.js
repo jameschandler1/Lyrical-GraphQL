@@ -7,7 +7,7 @@ const {
   GraphQLInt,
   GraphQLString
 } = graphql;
-const Lyric = mongoose.model('lyric');
+
 
 const LyricType = new GraphQLObjectType({
   name:  'LyricType',

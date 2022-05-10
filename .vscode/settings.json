@@ -1,5 +1,6 @@
 {
   "synthwave84.brightness": 0.7,
-  "editor.fontFamily": "Inconsolata",
-  "editor.inlayHints.fontFamily": "Inconsolata Italic"
+  "editor.fontFamily": "Iosevka",
+  "editor.inlayHints.fontFamily": "Inconsolata Italic",
+  "editor.wordWrap": "on"
 }
