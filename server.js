@@ -20,40 +20,21 @@ db.on("connected", () => {
   console.log("connected to the database");
 });
 
-const server = new ApolloServer({
-  schema,
-  context: ({ req }) => ({
-    req,
-    db: mongoose.connection,
-  }),
+const server = new ApolloServer("/graphql", {
+  typeDefs,
+  resolvers,
+  csrfPrevention: true,
+  graphiql: true,
 }); // create the server instanceof ApolloServer class
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-
+server.applyMiddleware({ app }); // apply the middleware to the server
 app.listen(PORT, () => {
   console.log(`🚀 Server ready at http://${HOST}:${PORT}${server.graphqlPath}`);
 });
 
-const webpackMiddleware = require("webpack-dev-middleware");
-const webpack = require("webpack");
-const webpackConfig = require("./webpack.config.js");
 
-((webpackConfig) => {
-  return new Promise((resolve, reject) => {
-    webpack(webpackConfig, (err, stats) => {
-      if (err) {
-        reject(err);
-        console.log(reject(err));
-      } else if (stats.hasErrors()) {
-        reject(new Error(stats.toString()));
-        console.log(reject(new Error(stats.toString())));
-      } else {
-        resolve();
-      }
-    });
-  });
-})
 
 module.exports = app;
